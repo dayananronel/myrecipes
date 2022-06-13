@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="food"
+            type="com.ronel.myrecipes.objects.Food" />
+
+        <variable
+            name="ingredients"
+            type="com.ronel.myrecipes.objects.Ingredients" />
+
+    </data>
+
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="@dimen/padding_10"
+       app:contentPadding="@dimen/generic_padding"
+       app:cardCornerRadius="@dimen/generic_padding">
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="@dimen/padding_10">
+
+
+           <LinearLayout
+               android:id="@+id/ingredientsImgLayout"
+               android:layout_width="80dp"
+               android:layout_height="80dp"
+               android:layout_alignParentStart="true"
+               android:background="@drawable/oval_stroked_corners">
+
+               <ImageView
+                   loadIngredientsImage="@{ingredients.image}"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:padding="@dimen/padding_10"
+                    />
+
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_toEndOf="@+id/ingredientsImgLayout"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_marginLeft="@dimen/generic_padding"
+               android:layout_centerVertical="true"
+               >
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@{``+ingredients.nameClean}"
+                   android:textColor="@color/black"
+                   android:textStyle="bold"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@{``+ingredients.amount+ `` + ingredients.unit}"
+                   />
+
+           </LinearLayout>
+
+       </RelativeLayout>
+
+   </androidx.cardview.widget.CardView>
+
+</layout>
