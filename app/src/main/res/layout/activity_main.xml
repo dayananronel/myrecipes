@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout>
-
-    <data>
-        <variable
-            name="viewModel"
-            type="com.ronel.myrecipes.GenericViewModel" />
-    </data>
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".master.MainActivity"
-        android:background="#DDF6F2F2">
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -26,50 +19,17 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto" />
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefreshDeliveries"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            swipeRefreshData="@{viewModel.status}">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    emptyLayout="@{viewModel.foods}"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:visibility="gone"
-                    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                        android:padding="@dimen/padding_10"
-                        android:text="@{viewModel.response}"/>
-
-                </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    displayLayout="@{viewModel.foods}"
-                    android:id="@+id/rv_food_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:listitem="@layout/foods_list_item"
-                    android:layout_margin="10dp" />
-
-            </LinearLayout>
-
-
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:layout_anchorGravity="top"
+            app:navGraph="@navigation/main_nav" />
 
 
     </LinearLayout>
+
 </layout>
 

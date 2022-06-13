@@ -81,4 +81,15 @@ class GenericViewModel (application: Application) : AndroidViewModel(application
         }
     }
 
+    class Factory(private val app: Application) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(GenericViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return GenericViewModel(app) as T
+            }
+            throw IllegalArgumentException("Unable to construct viewmodel")
+        }
+    }
+
+
 }

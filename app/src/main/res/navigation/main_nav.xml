@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/action_menu">
+
+    <fragment android:id="@+id/action_menu"
+        android:name="com.ronel.myrecipes.master.MenuFragment"
+        android:label="MyRecipes"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_action_menu_to_action_detail"
+            app:destination="@id/action_detail" />
+        <argument
+            android:name="food"
+            app:argType="string"
+           />
+    </fragment>
+
+    <fragment android:id="@+id/action_detail"
+        android:name="com.ronel.myrecipes.detail.DetailFragment"
+        android:label="Information"
+        tools:layout="@layout/fragment_detail">
+        <action
+            android:id="@+id/action_action_detail_to_action_menu"
+            app:destination="@id/action_menu" />
+    </fragment>
+
+</navigation>
