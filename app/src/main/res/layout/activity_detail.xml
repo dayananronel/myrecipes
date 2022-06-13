@@ -129,7 +129,7 @@
                    android:layout_height="wrap_content"
                    android:autoSizeTextType="uniform"
                    android:paddingTop="@dimen/generic_padding"
-                   android:text="@{viewModel.selectedFood.summary}"
+                   formatHTMLTags="@{viewModel.selectedFood.summary}"
                    tools:targetApi="o"
                    />
 

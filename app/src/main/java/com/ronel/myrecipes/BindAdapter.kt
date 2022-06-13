@@ -88,19 +88,14 @@ fun loadDishTypes(textView : TextView, dishTypes : List<String>){
 
 @BindingAdapter("formatHTMLTags")
 fun formatHTMLTags(textView : TextView, summary : String){
-     textView.text = fromHtml(summary)
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        textView.text = Html.fromHtml(summary, Html.FROM_HTML_MODE_COMPACT);
+    } else {
+        textView.text = Html.fromHtml(summary);
+    }
+
 }
 
-private fun fromHtml(source:String): Spanned {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-    {
-        Html.fromHtml(source, Html.FROM_HTML_MODE_LEGACY)
-    }
-    else
-    {
-        Html.fromHtml(source)
-    }
-}
 
 @BindingAdapter("loadIngredientsImage")
 fun loadIngredientsImage(image: ImageView, url :String?){
